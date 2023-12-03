@@ -9,8 +9,12 @@ class Lane {
     }
 
     get lane() {
+        if (document.getElementById(this.name)) return document.getElementById(this.name)
+
         let lane = document.createElement('custom-lane');
+        lane.setAttribute('id', this.name)
         lane.setAttribute('name', this.name);
+
         return lane;
     }
 
