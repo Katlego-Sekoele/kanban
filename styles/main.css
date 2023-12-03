@@ -4,6 +4,92 @@
 }
 
 body {
-  min-height: 100vh;
+  min-height: 90vh;
+  height: 90vh;
   margin: 2rem;
+}
+
+/* START: https://getcssscan.com/css-buttons-examples*/
+.btn {
+  align-items: center;
+  appearance: none;
+  background-color: #fff;
+  border: 1px solid #dbdbdb;
+  border-radius: .375em;
+  box-shadow: none;
+  box-sizing: border-box;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: BlinkMacSystemFont,-apple-system,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Fira Sans","Droid Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size: 1rem;
+  height: 2.5em;
+  justify-content: center;
+  line-height: 1.5;
+  padding: calc(.5em - 1px) 1em;
+  position: relative;
+  text-align: center;
+  user-select: none;
+  width: fit-content;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: top;
+  white-space: nowrap;
+  margin: 0.25rem;
+}
+
+.btn:active {
+  border-color: #4a4a4a;
+  outline: 0;
+}
+
+.btn:focus {
+  border-color: #485fc7;
+  outline: 0;
+}
+
+.btn:hover {
+  border-color: #b5b5b5;
+}
+
+.btn:focus:not(:active) {
+  box-shadow: rgba(72, 95, 199, .25) 0 0 0 .125em;
+}
+
+.danger {
+  background-color: #FF0505;
+  border: 1px solid #b5b5b5;
+  color: white;
+}
+/*END: https://getcssscan.com/css-buttons-examples*/
+
+.screen-center {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+}
+
+form * {
+  margin-bottom: 1rem;
+}
+
+form input, form textarea {
+  border-radius : 8px;
+  border: 2px solid #DDDDDD;
+  width : 25vw;
+  background-color : white;
+  height: 1.5rem;
+}
+
+#boardDescription {
+  resize: none;
+  height: 6rem;
+}
+
+.right-aligned {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
 }

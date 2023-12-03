@@ -35,12 +35,23 @@
     <script src="./web-components/lane.js"></script>
 
 
-    <custom-pool name="Kanban board" description="A description of this kanban board">
-      <div slot="lanes">
-        
-      </div>
-    </custom-pool>
+    <main id="MainDiv" class="screen-center">
+      <button id="createBoardButton" class="btn" onclick="hide('createBoardButton'); show('boardForm')">Create Board</button>
 
+      <form id="boardForm" style="display: none">
+        <label for="boardName">Board name</label><br>
+        <input type="text" id="boardName" name="boardName"><br>
+        <label for="boardDescription">Description</label><br>
+        <textarea id="boardDescription" name="boardDescription"></textarea>
+        <br><br>
+        <div class="right-aligned">
+          <input type="button" value="Cancel" class="btn danger" onclick="hide('boardForm');show('createBoardButton')">
+          <input type="button" value="Submit" class="btn" onclick="createBoard()">
+        </div>
+      </form>
+    </main>
+
+    <script src="logic/index.js"></script>
 
   </body>
 </html>
