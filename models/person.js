@@ -11,5 +11,6 @@ class Person {
         let avatar = document.createElement('custom-avatar')
         avatar.setAttribute('name', this.name);
         avatar.setAttribute('src', this.image);
+        return avatar
     }
 }

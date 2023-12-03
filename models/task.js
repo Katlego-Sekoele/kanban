@@ -31,6 +31,8 @@ class Task {
 
             card.appendChild(peopleDiv)
         }
+
+        return card;
     }
 
 }
