@@ -17,7 +17,8 @@ class Avatar extends HTMLElement {
         image.style.borderRadius = '50%';
 
         let div = document.createElement('div')
-
+        div.style.marginRight = '0.6rem'
+        div.style.display = 'inline-block';
 
 
         let src

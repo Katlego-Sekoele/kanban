@@ -43,10 +43,13 @@ class Card extends HTMLElement {
         let peopleDiv = document.createElement("div")
         let peopleSlot = document.createElement('slot')
         peopleSlot.setAttribute('name', 'people')
-        peopleDiv.appendChild(peopleSlot)
-        mainDiv.appendChild(peopleDiv)
         peopleDiv.style.width = '100%'
         peopleDiv.style.marginBottom = '1rem'
+        peopleSlot.style.display = 'flex';
+        peopleSlot.style.flexWrap = 'wrap';
+        peopleSlot.style.width = '100%'
+        peopleDiv.appendChild(peopleSlot)
+        mainDiv.appendChild(peopleDiv)
 
         if (this.getAttribute('tags')){
             let tags = this.getAttribute('tags').split(',')
