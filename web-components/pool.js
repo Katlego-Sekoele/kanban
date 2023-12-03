@@ -43,6 +43,8 @@ class Pool extends HTMLElement {
         lanesDiv.style.margin = '0.7rem'
         lanesDiv.style.borderRadius = '12px'
         lanesDiv.style.backgroundColor = '#F8F8F8'
+        lanesDiv.style.overflowX = 'auto'
+        lanesDiv.style.whiteSpace = 'nowrap'
 
         shadow.appendChild(mainDiv)
     }

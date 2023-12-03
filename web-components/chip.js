@@ -1,3 +1,14 @@
+const defaultColors = [
+    '#77DD77',
+    '#bee7a5',
+    '#89cff0',
+    '#bdb0d0',
+    '#ff9899'
+]
+
+const getColor = () =>  defaultColors[Math.floor(Math.random() * defaultColors.length)];
+
+
 class Chip extends HTMLElement {
     static observedAttributes = ["color", "background-color", 'text'];
 
@@ -6,6 +17,7 @@ class Chip extends HTMLElement {
     }
 
     connectedCallback() {
+
 
         // Create a shadow root
         const shadow = this.attachShadow({ mode: "open" });
@@ -30,6 +42,8 @@ class Chip extends HTMLElement {
         if (this.hasAttribute("background-color")) {
             bgColor = this.getAttribute("background-color");
             div.style.backgroundColor = bgColor;
+        } else {
+            div.style.backgroundColor = getColor()
         }
 
         div.style.width = 'fit-content'
