@@ -1,7 +1,9 @@
 * {
-  margin: 0;
+
+  font-family: Arial, Helvetica, serif;
 }
 
 body {
   min-height: 100vh;
+  margin: 2rem;
 }

@@ -54,12 +54,14 @@ class Card extends HTMLElement {
             mainDiv.appendChild(tagsDiv)
             tagsDiv.style.width = '100%'
             tagsDiv.style.display = 'flex'
+            tagsDiv.style.flexWrap = 'wrap'
 
             for (const tag of tags) {
                 let tagChip = document.createElement('custom-chip')
                 tagChip.setAttribute('text', tag)
                 tagChip.setAttribute('background-color', 'pink')
                 tagChip.style.marginRight = '0.3rem'
+                tagChip.style.marginBottom = '0.3rem'
                 tagsDiv.appendChild(tagChip)
             }
 

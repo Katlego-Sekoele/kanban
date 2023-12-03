@@ -16,7 +16,7 @@
 
     <!-- GOOGLE FONTS -->
     <link rel="preconnect" href="https://fonts.gstatic.com" />
-    <!-- *currently set to "Roboto". Feel free to change it to whatever you like* -->
+
     <link
       href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap"
       rel="stylesheet"
@@ -27,13 +27,14 @@
   </head>
   <body>
 
+    <!-- define components-->
     <script src="./web-components/chip.js"></script>
+    <script src="./web-components/avatar.js"></script>
     <script src="./web-components/card.js"></script>
 
     <custom-card title="Card title" description="A description of the task" tags="Budget,Accounting,Financial" people="something">
       <div slot="people">
-        <p>LOL</p>
-        <p>LOL2</p>
+        <custom-avatar src="https://www.w3schools.com/w3images/avatar5.png"></custom-avatar>
       </div>
     </custom-card>
 
