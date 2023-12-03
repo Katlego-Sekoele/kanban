@@ -25,6 +25,10 @@ class Chip extends HTMLElement {
         let chip = document.createElement('span');
         let div = document.createElement('div')
         div.style.borderRadius = '1rem'
+        div.style.height = '0.8rem'
+        div.style.display = 'flex'
+        div.style.alignItems = 'center'
+        div.style.justifyContent = 'center'
 
         let text;
         if (this.hasAttribute("text")) {
