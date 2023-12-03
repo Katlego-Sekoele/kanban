@@ -19,6 +19,7 @@ class Card extends HTMLElement {
         mainDiv.style.height = 'fit-content'
         mainDiv.style.padding = '1.5rem'
         mainDiv.style.margin = '1rem'
+        mainDiv.style.backgroundColor = 'white'
         // mainDiv.style.boxShadow = '0px 0px 18px 1px grey'
 
         if (this.getAttribute('title')) {

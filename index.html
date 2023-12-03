@@ -31,12 +31,18 @@
     <script src="./web-components/chip.js"></script>
     <script src="./web-components/avatar.js"></script>
     <script src="./web-components/card.js"></script>
+    <script src="./web-components/pool.js"></script>
 
-    <custom-card title="Card title" description="A description of the task" tags="Budget,Accounting,Financial" people="something">
-      <div slot="people">
-        <custom-avatar src="https://www.w3schools.com/w3images/avatar5.png"></custom-avatar>
+    <custom-pool name="Kanban board" description="A description of this kanban board">
+      <div slot="lanes">
+        <custom-card title="Card title" description="A description of the task" tags="Budget,Accounting,Financial" people="something">
+          <div slot="people">
+            <custom-avatar src="https://www.w3schools.com/w3images/avatar5.png"></custom-avatar>
+          </div>
+        </custom-card>
       </div>
-    </custom-card>
+    </custom-pool>
+
 
   </body>
 </html>
