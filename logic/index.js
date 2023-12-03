@@ -29,7 +29,14 @@ document.addEventListener('DOMContentLoaded', function() {
         menu.style.display = menu.style.display === 'none' ? 'block' : 'none';
     });
 
+    document.getElementById('createLaneBtn').onclick = () => {
+
+        board.addLane('Todo', [new Lane('Default', []),])
+
+    }
+
     let board;
+    let lanes = [];
 
     function createBoard() {
         let nameInput = document.getElementById('boardName');
@@ -40,14 +47,17 @@ document.addEventListener('DOMContentLoaded', function() {
 
         hide('boardForm')
 
-        let board = new Board(name, description, [])
+        board = new Board(name, description, [])
 
-        document.getElementById('MainDiv').appendChild(board.pool)
+        let pool = board.pool
+
         document.getElementById('MainDiv').setAttribute('class', '')
 
         document.getElementById('fabContainer').style.display = 'block'
 
     }
+
+
 
     function hide (elementId) {
         let element = document.getElementById(elementId)

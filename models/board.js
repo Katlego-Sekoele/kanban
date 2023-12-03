@@ -1,12 +1,16 @@
+import Lane from '../models/lane.js'
+
 export default class Board {
     name
     description
     lanes
+    lanesDiv
 
     constructor(name, description, lanes) {
         this.name = name;
         this.description = description
         this.lanes = lanes
+        this.lanesDiv = undefined
     }
 
     get pool () {
@@ -17,23 +21,26 @@ export default class Board {
         pool.setAttribute('name', this.name)
         pool.setAttribute('description', this.description)
 
-        if (this.lanes.length > 0) {
+        this.lanesDiv = document.createElement('div')
+        this.lanesDiv.setAttribute('slot', 'lanes')
+        this.lanesDiv.setAttribute('id', 'lanes')
 
-            let lanesDiv = document.createElement('div')
-            lanesDiv.setAttribute('slot', 'lanes')
-
-            for (const lane of lanes) {
-                lanesDiv.appendChild(lane.lane)
-            }
-
-            pool.appendChild(lanesDiv)
+        for (const lane of this.lanes) {
+            this.lanesDiv.appendChild(lane.lane)
         }
+
+        pool.appendChild(this.lanesDiv)
+
+        // Append the pool element to the document
+        document.getElementById('MainDiv').appendChild(pool);
 
         return pool
     }
 
     addLane(name, tasks) {
         let lane = new Lane(name, tasks)
-        this.lanes.append(lane)
+        this.lanes.push(lane)
+        console.log(lane)
+        lane.attachToBoard(this.lanesDiv)
     }
 }
