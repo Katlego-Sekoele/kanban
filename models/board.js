@@ -1,4 +1,4 @@
-class Board {
+export default class Board {
     name
     description
     lanes
@@ -17,7 +17,7 @@ class Board {
         pool.setAttribute('name', this.name)
         pool.setAttribute('description', this.description)
 
-        if (lanes.length > 0) {
+        if (this.lanes.length > 0) {
 
             let lanesDiv = document.createElement('div')
             lanesDiv.setAttribute('slot', 'lanes')

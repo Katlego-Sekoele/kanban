@@ -33,6 +33,11 @@ class Pool extends HTMLElement {
             descriptionP.textContent = this.getAttribute('description')
         }
 
+        let contentDiv = document.createElement("div")
+        contentDiv.setAttribute('id', 'boardContentDiv')
+        mainDiv.appendChild(contentDiv)
+
+
         let lanesDiv = document.createElement("div")
         let lanesSlot = document.createElement('slot')
         lanesSlot.setAttribute('name', 'lanes')

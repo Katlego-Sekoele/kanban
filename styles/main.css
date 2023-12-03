@@ -93,3 +93,56 @@ form input, form textarea {
   flex-direction: row;
   justify-content: flex-end;
 }
+
+/*START: GPT*/
+
+.fab-container {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+}
+
+.fab {
+  background-color: #007bff;
+  color: #fff;
+  font-size: 1.5rem;
+  width: 60px;
+  height: 60px;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease;
+}
+
+.fab:hover {
+  background-color: #0056b3;
+}
+
+.menu {
+  display: none;
+  position: absolute;
+  bottom: 4.1rem;
+  right: 0.8rem;
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  min-width: 10vw;
+  border-radius: 0.5rem;
+}
+
+.menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.menu ul li {
+  padding: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.menu ul li:hover {
+  background-color: #f4f4f4;
+}
+/*END: GPT*/

@@ -1,4 +1,4 @@
-class Lane {
+export default class Lane {
 
     name
     tasks

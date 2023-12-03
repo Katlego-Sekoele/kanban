@@ -27,16 +27,8 @@
   </head>
   <body>
 
-    <!-- define components-->
-    <script src="./web-components/chip.js"></script>
-    <script src="./web-components/avatar.js"></script>
-    <script src="./web-components/card.js"></script>
-    <script src="./web-components/pool.js"></script>
-    <script src="./web-components/lane.js"></script>
-
-
     <main id="MainDiv" class="screen-center">
-      <button id="createBoardButton" class="btn" onclick="hide('createBoardButton'); show('boardForm')">Create Board</button>
+      <button id="createBoardButton" class="btn">Create Board</button>
 
       <form id="boardForm" style="display: none">
         <label for="boardName">Board name</label><br>
@@ -45,13 +37,29 @@
         <textarea id="boardDescription" name="boardDescription"></textarea>
         <br><br>
         <div class="right-aligned">
-          <input type="button" value="Cancel" class="btn danger" onclick="hide('boardForm');show('createBoardButton')">
-          <input type="button" value="Submit" class="btn" onclick="createBoard()">
+          <input id="cancelBoardDetails" type="button" value="Cancel" class="btn danger">
+          <input id="submitBoardDetails" type="button" value="Submit" class="btn">
         </div>
       </form>
     </main>
 
-    <script src="logic/index.js"></script>
+    <div id="fabContainer" class="fab-container" style="display: none">
+      <button id="fabBtn" class="fab">+</button>
+      <div class="menu" id="menu">
+        <ul>
+          <li>Create Lane</li>
+          <li>Add new task</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- define components-->
+    <script defer src="./web-components/chip.js"></script>
+    <script defer src="./web-components/avatar.js"></script>
+    <script defer src="./web-components/card.js"></script>
+    <script defer src="./web-components/pool.js"></script>
+    <script defer src="./web-components/lane.js"></script>
+    <script defer type="module" src="logic/index.js"></script>
 
   </body>
 </html>
