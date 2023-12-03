@@ -26,6 +26,16 @@
     <link rel="stylesheet" href="./styles/main.css" />
   </head>
   <body>
-    <!-- WEBSITE CONTENT GOES HERE -->
+
+    <script src="./web-components/chip.js"></script>
+    <script src="./web-components/card.js"></script>
+
+    <custom-card title="Card title" description="A description of the task" tags="Budget,Accounting,Financial" people="something">
+      <div slot="people">
+        <p>LOL</p>
+        <p>LOL2</p>
+      </div>
+    </custom-card>
+
   </body>
 </html>
