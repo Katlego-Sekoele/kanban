@@ -47,6 +47,8 @@ class Card extends HTMLElement {
         deleteButton.style.float = 'right';
         deleteButton.style.cursor = 'pointer';
         deleteButton.style.border = 'solid 1px grey';
+        deleteButton.style.color = 'black';
+        deleteButton.style.fontWeight = 'bold';
         deleteButton.style.backgroundColor = 'white';
         deleteButton.style.borderRadius = '50%';
         deleteButton.onclick = () => {
