@@ -86,17 +86,57 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     document.getElementById('addTaskBtn').onclick = () => {
-        let taskName = prompt("Name of task")
-        if (!taskName) return
 
-        let taskDescription = prompt("Description of task")
-        let taskTags = prompt("Tags of task").split(',')
-        let laneName = prompt("Name of lane")
+        let dialog = document.getElementById('taskFormDialog')
+        let laneSelectElement = document.getElementById('taskLane')
 
-        if (!laneName) return
-        board.lanes.find(lane => lane.name.toLowerCase() === laneName.toLowerCase()).addTask(taskName, taskDescription, [], taskTags, save)
+        for (const laneName of board.laneNames) {
+            let option = document.createElement('option')
+            option.value = laneName
+            option.textContent = laneName
+            laneSelectElement.appendChild(option)
+        }
 
-        save()
+        let taskTagInput = document.getElementById('taskTags')
+        taskTagInput.onkeydown = (e) => {
+            if (e.key === 'Enter') {
+                let tag = taskTagInput.value
+                if (!tag) return
+
+                let chip = document.createElement('custom-chip')
+                chip.setAttribute('text', tag)
+                document.getElementById('selectedTags').appendChild(chip)
+                taskTagInput.value = ''
+                chip.onclick = () => {
+                    chip.remove()
+                }
+            }
+        }
+
+        dialog.showModal()
+
+        document.getElementById('cancelAddTask').onclick = () => {
+            dialog.close()
+        }
+
+        document.getElementById('submitTask').onclick = () => {
+
+            let taskName = document.getElementById('taskName').value
+            let taskDescription = document.getElementById('taskDescription').value
+            let taskLane = document.getElementById('taskLane').value
+
+            let chipElements = document.getElementById('selectedTags').children
+            let taskTags = []
+            for (const chipElement of chipElements) {
+                taskTags.push(chipElement.getAttribute('text'))
+            }
+            if (!taskLane) return
+            board.lanes.find(lane => lane.name.toLowerCase() === taskLane.toLowerCase()).addTask(taskName, taskDescription, [], taskTags, save)
+
+            dialog.close()
+            save()
+        }
+
     }
 
     let board;

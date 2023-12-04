@@ -54,6 +54,10 @@ body {
   form textarea {
     min-width: 100%;
   }
+
+  form select {
+    min-width: 100%;
+  }
 }
 
 /* START: https://getcssscan.com/css-buttons-examples*/
@@ -122,16 +126,16 @@ form * {
   margin-bottom: 1rem;
 }
 
-form input, form textarea {
+form input, form textarea, form select {
   border-radius : 8px;
   border: 2px solid #DDDDDD;
   width : 50vw;
   background-color : white;
   height: 1.5rem;
-
+  resize: none;
 }
 
-#boardDescription {
+#boardDescription, #taskDescription {
   resize: none;
   height: 6rem;
 }
@@ -194,3 +198,16 @@ form input, form textarea {
   background-color: #f4f4f4;
 }
 /*END: GPT*/
+
+.tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-content: flex-start;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+dialog{
+  max-width: 50vw;
+}

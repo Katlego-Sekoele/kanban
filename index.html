@@ -44,11 +44,41 @@
 
       <dialog id="laneFormDialog">
         <form method="dialog" id="laneForm">
-          <label for="laneName">Add Lane</label><br>
-          <input type="text" id="laneName" name="boardName"><br>
+          <label for="laneName">Name</label><br>
+          <input type="text" id="laneName" name="laneName"><br><br>
           <div class="right-aligned">
             <input id="cancelLaneAdd" type="button" value="Cancel" class="btn danger">
             <input id="submitLane" type="button" value="Submit" class="btn">
+          </div>
+        </form>
+      </dialog>
+
+      <dialog id="taskFormDialog">
+        <form method="dialog" id="taskForm">
+
+          <label for="taskName">Task</label><br>
+          <input type="text" id="taskName" name="taskName"><br>
+
+          <label for="taskDescription">Description</label><br>
+          <textarea id="taskDescription" name="taskDescription"></textarea>
+          <br>
+
+          <label for="taskTags">tags</label><br>
+          <input type="text" id="taskTags" name="taskTags">
+          <br>
+          <div id="selectedTags" class="tag-list">
+
+          </div>
+
+          <label for="taskLane">Lane</label><br>
+          <select id="taskLane">
+              <!--<option label="Volvo" value="Volvo">Volvo (Latin for "I roll")</option>-->
+          </select>
+          <br><br>
+
+          <div class="right-aligned">
+            <input id="cancelAddTask" type="button" value="Cancel" class="btn danger">
+            <input id="submitTask" type="button" value="Submit" class="btn">
           </div>
         </form>
       </dialog>
