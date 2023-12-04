@@ -12,9 +12,10 @@ class Lane extends HTMLElement {
 
         let mainDiv = document.createElement("div");
         mainDiv.style.width = 'fit-content'
-        mainDiv.style.height = 'inherit'
+        mainDiv.style.minHeight = 'inherit'
         mainDiv.style.marginRight = '1rem'
         mainDiv.style.display = 'inline-block'
+        mainDiv.style.verticalAlign = 'top'
 
         if (this.getAttribute('name')) {
             let titleChip = document.createElement("custom-chip")

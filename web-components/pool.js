@@ -50,6 +50,7 @@ class Pool extends HTMLElement {
         lanesDiv.style.backgroundColor = '#F8F8F8'
         lanesDiv.style.overflowX = 'auto'
         lanesDiv.style.whiteSpace = 'nowrap'
+        lanesDiv.style.minHeight = '65vh'
 
         shadow.appendChild(mainDiv)
     }
