@@ -1,8 +1,12 @@
 class Card extends HTMLElement {
-    static observedAttributes = ['title', 'description', 'people', 'tasks', 'tags'];
+    static observedAttributes = ['title', 'description', 'people', 'tasks', 'tags', 'remove'];
 
     constructor() {
         super();
+    }
+
+    set onRemoveTask(callback) {
+        this._onRemoveTask = callback;
     }
 
     connectedCallback() {
@@ -22,8 +26,33 @@ class Card extends HTMLElement {
         mainDiv.style.backgroundColor = 'white'
         // mainDiv.style.boxShadow = '0px 0px 18px 1px grey'
 
+        let titleDiv = document.createElement("div");
+        mainDiv.appendChild(titleDiv);
+        titleDiv.style.width = '100%';
+
+        // Add close button
+        let deleteButton = document.createElement("button");
+        deleteButton.textContent = 'x';
+        deleteButton.className = 'btn';  // Add the "btn" class
+        deleteButton.style.float = 'right';
+        deleteButton.style.cursor = 'pointer';
+        deleteButton.style.border = 'solid 1px grey';
+        deleteButton.style.backgroundColor = 'white';
+        deleteButton.style.borderRadius = '50%';
+        deleteButton.onclick = () => {
+            // Call the remove task callback if it exists
+            if (this._onRemoveTask) {
+                this._onRemoveTask();
+            }
+
+            // For example, remove the element from the DOM
+            this.remove();
+        };
+
+        titleDiv.appendChild(deleteButton);
+
+
         if (this.getAttribute('title')) {
-            let titleDiv = document.createElement("div")
             mainDiv.appendChild(titleDiv)
             titleDiv.style.width = '100%'
             let titleh2 = document.createElement("h2")

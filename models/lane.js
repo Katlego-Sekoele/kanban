@@ -21,10 +21,14 @@ export default class Lane {
         return lane;
     }
 
-    addTask (name, description, people, tags) {
+    addTask (name, description, people, tags, saveFunction) {
         let task = new Task(name, description, people, tags)
         this.tasks.push(task)
         let card = task.Card
+        card.onRemoveTask = () => {
+            this.tasks = this.tasks.filter(task => task.name !== name)
+            saveFunction()
+        }
         let cardsSlot = document.getElementById(this.name).shadowRoot.getElementById('lane')
         cardsSlot.appendChild(card)
     }

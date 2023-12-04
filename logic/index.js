@@ -26,14 +26,7 @@ document.addEventListener('DOMContentLoaded', function() {
         for (const lane of lanes) {
             board.addLane(lane.name, [])
             for (const task of lane.tasks) {
-                board.lanes.find(laneInBoard => laneInBoard.name === lane.name).addTask(task.name, task.description, task.people, task.tags)
-            }
-        }
-
-        for (const lane of lanes) {
-            lane.attachToBoard(board.lanesDiv)
-            for (const task of lane.tasks) {
-                lane.addTask(task.name, task.description, task.people, task.tags)
+                board.lanes.find(laneInBoard => laneInBoard.name === lane.name).addTask(task.name, task.description, task.people, task.tags, save)
             }
         }
 
@@ -84,7 +77,7 @@ document.addEventListener('DOMContentLoaded', function() {
         let taskTags = prompt("Tags of task").split(',')
         let laneName = prompt("Name of lane")
 
-        board.lanes.find(lane => lane.name === laneName).addTask(taskName, taskDescription, [], taskTags)
+        board.lanes.find(lane => lane.name === laneName).addTask(taskName, taskDescription, [], taskTags, save)
 
         save()
     }
