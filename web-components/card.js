@@ -110,7 +110,7 @@ class Card extends HTMLElement {
 
         }
 
-        this.loadStyles('../styles/main.css', shadow);
+        this.loadStyles('styles/main.css', shadow);
 
         shadow.appendChild(mainDiv)
     }

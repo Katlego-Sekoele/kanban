@@ -64,8 +64,7 @@ class Pool extends HTMLElement {
         lanesDiv.style.whiteSpace = 'nowrap'
         lanesDiv.style.minHeight = '65vh'
 
-        this.loadStyles('../styles/main.css', shadow);
-
+        this.loadStyles('styles/main.css', shadow);
         shadow.appendChild(mainDiv)
     }
 

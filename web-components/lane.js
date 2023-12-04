@@ -32,7 +32,7 @@ class Lane extends HTMLElement {
         mainDiv.appendChild(cardsDiv)
         cardsDiv.style.width = '100%'
 
-        this.loadStyles('../styles/main.css', shadow);
+        this.loadStyles('styles/main.css', shadow);
 
         shadow.appendChild(mainDiv)
     }
