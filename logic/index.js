@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('createLaneBtn').onclick = () => {
 
         let laneName = prompt("Name of lane")
-        
+
         while (board.laneNames.findLast(lane => lane === laneName)) {
             alert('Lane name already exists')
             laneName = prompt("Name of lane")
@@ -40,6 +40,15 @@ document.addEventListener('DOMContentLoaded', function() {
 
         board.addLane(laneName, [])
 
+    }
+
+    document.getElementById('addTaskBtn').onclick = () => {
+        let taskName = prompt("Name of task")
+        let taskDescription = prompt("Description of task")
+        let taskTags = prompt("Tags of task").split(',')
+        let laneName = prompt("Name of lane")
+
+        board.lanes.find(lane => lane.name === laneName).addTask(taskName, taskDescription, [], taskTags)
     }
 
     let board;

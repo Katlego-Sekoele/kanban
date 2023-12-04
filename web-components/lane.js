@@ -12,7 +12,7 @@ class Lane extends HTMLElement {
 
         let mainDiv = document.createElement("div");
         mainDiv.style.width = 'fit-content'
-        mainDiv.style.height = 'fit-content'
+        mainDiv.style.height = 'inherit'
         mainDiv.style.marginRight = '1rem'
         mainDiv.style.display = 'inline-block'
 
@@ -25,6 +25,7 @@ class Lane extends HTMLElement {
         let cardsDiv = document.createElement("div")
         let cardsSlot = document.createElement('slot')
         cardsSlot.setAttribute('name', 'lane')
+        cardsSlot.setAttribute('id', 'lane')
         cardsDiv.appendChild(cardsSlot)
         mainDiv.appendChild(cardsDiv)
         cardsDiv.style.width = '100%'

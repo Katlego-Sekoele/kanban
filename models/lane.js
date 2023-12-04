@@ -1,3 +1,5 @@
+import Task from "../models/task.js";
+
 export default class Lane {
 
     name
@@ -21,7 +23,10 @@ export default class Lane {
 
     addTask (name, description, people, tags) {
         let task = new Task(name, description, people, tags)
-        this.tasks.append(task)
+        this.tasks.push(task)
+        let card = task.Card
+        let cardsSlot = document.getElementById(this.name).shadowRoot.getElementById('lane')
+        cardsSlot.appendChild(card)
     }
 
     attachToBoard = (laneSlot) =>{
