@@ -10,7 +10,6 @@ const defaultColors = [
 
 const getColor = () =>  defaultColors[Math.floor(Math.random() * defaultColors.length)];
 
-
 class Chip extends CustomWebComponent {
     static observedAttributes = ["color", "background-color", 'text'];
 
@@ -19,31 +18,28 @@ class Chip extends CustomWebComponent {
     }
 
     connectedCallback() {
-
-
-        // Create a shadow root
         const shadow = this.attachShadow({ mode: "open" });
 
-        let chip = document.createElement('span');
+        // container
         let div = document.createElement('div')
-        div.style.borderRadius = '1rem'
-        div.style.height = '0.8rem'
-        div.style.display = 'flex'
-        div.style.alignItems = 'center'
-        div.style.justifyContent = 'center'
-
+        let chip = document.createElement('span');
+        chip.setAttribute('aria-label', 'Task tag')
+        
+        // text
         let text;
         if (this.hasAttribute("text")) {
             text = this.getAttribute("text");
             chip.innerText = text
         }
 
+        // text color
         let color
         if (this.hasAttribute("color")) {
             color = this.getAttribute("color");
             chip.style.color = color;
         }
 
+        // background color
         let bgColor
         if (this.hasAttribute("background-color")) {
             bgColor = this.getAttribute("background-color");
@@ -52,36 +48,10 @@ class Chip extends CustomWebComponent {
             div.style.backgroundColor = getColor()
         }
 
-        div.style.width = 'fit-content'
-        div.style.padding = '0.5rem'
-
+        this.loadStyles('styles/main.css', shadow)
+        div.setAttribute('class', 'chip');
         div.appendChild(chip)
         shadow.appendChild(div)
-
-    }
-
-    disconnectedCallback() {
-        // console.log("Custom element removed from page.");
-    }
-
-    adoptedCallback() {
-        // console.log("Custom element moved to new page.");
-    }
-
-    attributeChangedCallback(name, oldValue, newValue) {
-        console.log(`Attribute ${name} has changed.`);
-
-        if (name === Chip.observedAttributes[0]){
-            // change text color
-        }
-
-        if (name === Chip.observedAttributes[1]){
-            // change background color
-        }
-
-        if (name === Chip.observedAttributes[2]){
-            // change text
-        }
 
     }
 

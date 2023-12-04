@@ -18,6 +18,7 @@
   --border-radius: 8px;
   --border-width: 2px;
   --border-width-small: 1px;
+  --chip-border-radius: 1rem;
 
   /* paddings */
   --padding-small: 0.5rem;
@@ -33,6 +34,7 @@
   --card-width-mobile: 70vw;
   --button-small-width: 1.5rem;
   --button-small-height: 1.5rem;
+  --chip-height: 0.8rem;
 }
 
 * {
@@ -45,6 +47,15 @@ body {
   margin: var(--margin-xlarge, 2rem);
   max-width: 85vw;
 }
+
+/* START: Chip */
+.chip { 
+  border-radius: var(--chip-border-radius, 1rem);
+  height: var(--chip-height, 0.8rem);
+  width: fit-content;
+  padding: var(--padding-small, 0.5rem);
+}
+/* END: Chip */
 
 /* BEGIN: Card */
 .card {
