@@ -1,5 +1,11 @@
 import CustomWebComponent from "./CustomWebComponent.js";
 
+const binSvg = `
+<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100" viewBox="0 0 24 24">
+    <path d="M 10 2 L 9 3 L 3 3 L 3 5 L 4.109375 5 L 5.8925781 20.255859 L 5.8925781 20.263672 C 6.023602 21.250335 6.8803207 22 7.875 22 L 16.123047 22 C 17.117726 22 17.974445 21.250322 18.105469 20.263672 L 18.107422 20.255859 L 19.890625 5 L 21 5 L 21 3 L 15 3 L 14 2 L 10 2 z M 6.125 5 L 17.875 5 L 16.123047 20 L 7.875 20 L 6.125 5 z"></path>
+</svg>
+`
+
 class Card extends CustomWebComponent {
     static observedAttributes = ['title', 'description', 'people', 'tasks', 'tags', 'remove'];
 
@@ -21,70 +27,50 @@ class Card extends CustomWebComponent {
     }
 
     connectedCallback() {
-
-        // Create a shadow root
         const shadow = this.attachShadow({ mode: "open" });
 
+        // card container
         let mainDiv = document.createElement("div");
-        mainDiv.style.borderRadius = '8px'
-        mainDiv.style.border = '2px'
-        mainDiv.style.borderColor = '#DDDDDD'
-        mainDiv.style.borderStyle = 'solid'
-        mainDiv.style.width = '25vw'
-        mainDiv.style.height = 'fit-content'
-        mainDiv.style.padding = '1.5rem'
-        mainDiv.style.margin = '1rem'
-        mainDiv.style.backgroundColor = 'white'
-        // mainDiv.style.boxShadow = '0px 0px 18px 1px grey'
         mainDiv.setAttribute('class', 'card')
 
+        // title
         let titleDiv = document.createElement("div");
+        titleDiv.setAttribute('class', 'cardTitle')
         mainDiv.appendChild(titleDiv);
-        titleDiv.style.width = '100%';
 
-        // Add close button
+        // delete button
         let deleteButton = document.createElement("button");
-        deleteButton.textContent = 'x';
-        deleteButton.className = 'btn';  // Add the "btn" class
-        deleteButton.style.float = 'right';
-        deleteButton.style.cursor = 'pointer';
-        deleteButton.style.border = 'solid 1px grey';
-        deleteButton.style.color = 'black';
-        deleteButton.style.fontWeight = 'bold';
-        deleteButton.style.backgroundColor = 'white';
-        deleteButton.style.borderRadius = '50%';
-        deleteButton.setAttribute('class', 'btn danger')
+        deleteButton.setAttribute('class', 'deleteButton')
+        deleteButton.setAttribute('aria-label', 'Delete task')
+        deleteButton.innerHTML = binSvg
         deleteButton.onclick = () => {
-            // Call the remove task callback if it exists
             if (this._onRemoveTask) {
                 this._onRemoveTask();
             }
-
-            // For example, remove the element from the DOM
             this.remove();
         };
-
         mainDiv.appendChild(deleteButton);
 
 
+        // title
         if (this.getAttribute('title')) {
             mainDiv.appendChild(titleDiv)
-            titleDiv.style.width = '100%'
-            let titleh2 = document.createElement("h2")
-            titleDiv.appendChild(titleh2)
-            titleh2.textContent = this.getAttribute('title')
+            let title = document.createElement("h2")
+            titleDiv.appendChild(title)
+            title.textContent = this.getAttribute('title')
         }
 
+        // description
         if (this.getAttribute('description')) {
             let descriptionDiv = document.createElement("div")
             mainDiv.appendChild(descriptionDiv)
-            descriptionDiv.style.width = '100%'
-            descriptionDiv.style.whiteSpace = 'normal';
+            descriptionDiv.setAttribute('class', 'cardDescription')
             let descriptionP = document.createElement("p")
             descriptionDiv.appendChild(descriptionP)
             descriptionP.textContent = this.getAttribute('description')
         }
 
+        // under construction (assignees)
         let peopleDiv = document.createElement("div")
         let peopleSlot = document.createElement('slot')
         peopleSlot.setAttribute('name', 'people')
@@ -96,40 +82,24 @@ class Card extends CustomWebComponent {
         peopleDiv.appendChild(peopleSlot)
         mainDiv.appendChild(peopleDiv)
 
+        // tags
         if (this.getAttribute('tags')){
             let tags = this.getAttribute('tags').split(',')
 
             let tagsDiv = document.createElement("div")
+            tagsDiv.setAttribute('class', 'cardTags')
             mainDiv.appendChild(tagsDiv)
-            tagsDiv.style.width = '100%'
-            tagsDiv.style.display = 'flex'
-            tagsDiv.style.flexWrap = 'wrap'
-
             for (const tag of tags) {
                 let tagChip = document.createElement('custom-chip')
                 tagChip.setAttribute('text', tag)
-                tagChip.style.marginRight = '0.3rem'
-                tagChip.style.marginBottom = '0.3rem'
                 tagsDiv.appendChild(tagChip)
             }
 
         }
 
+        // attach container to shadow root
         this.loadStyles('styles/main.css', shadow);
         shadow.appendChild(mainDiv)
-    }
-
-    disconnectedCallback() {
-        // console.log("Custom element removed from page.");
-    }
-
-    adoptedCallback() {
-        // console.log("Custom element moved to new page.");
-    }
-
-    attributeChangedCallback(name, oldValue, newValue) {
-        console.log(`Attribute ${name} has changed.`);
-
     }
 
 }

@@ -37,6 +37,7 @@ class Avatar extends CustomWebComponent {
             image.alt = `Avatar image for ${this.getAttribute('name')}`
         }
 
+        this.loadStyles('styles/main.css', shadow);
         div.appendChild(image)
         shadow.appendChild(div)
 

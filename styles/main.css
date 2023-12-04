@@ -1,14 +1,85 @@
+:root {
+  /* typography */
+  font-family: Arial, Helvetica, serif;
+  --light-text-color: white;
+  --dark-text-color: black;
+
+  /* colors */
+  --background-color: white;
+  --border-color: #DDDDDD;
+  --primary-color: #007bff;
+  --secondary-color: #6c757d;
+  --success-color: #28a745;
+  --info-color: #17a2b8;
+  --warning-color: #ffc107;
+  --danger-color: #dc3545;
+
+  /* borders */
+  --border-radius: 8px;
+  --border-width: 2px;
+  --border-width-small: 1px;
+
+  /* paddings */
+  --padding-small: 0.5rem;
+  --padding-large: 1.5rem;
+
+  /* margins */
+  --margin-large: 1rem;
+  --margin-xlarge: 2rem;
+  --margin-tiny: 0.25rem;
+
+  /* sizing */
+  --card-width-desktop: 25vw;
+  --card-width-mobile: 70vw;
+  --button-small-width: 1.5rem;
+  --button-small-height: 1.5rem;
+}
+
 * {
 
-  font-family: Arial, Helvetica, serif;
 }
 
 body {
   min-height: 90vh;
   height: 90vh;
-  margin: 2rem;
+  margin: var(--margin-xlarge, 2rem);
   max-width: 85vw;
 }
+
+/* BEGIN: Card */
+.card {
+  border-radius: var(--border-radius, 8px);
+  border: var(--border-width, 2px);
+  border-color: var(--border-color, #DDDDDD);
+  border-style: solid;
+  width: var(--card-width-desktop, 25vw);
+  height: fit-content;
+  padding: var(--padding-large, 1.5rem);
+  margin: var(--margin-large, 1rem);
+  background-color: white;
+}
+
+.cardTitle {
+  width: 100%;
+  white-space: normal;
+}
+
+.cardDescription{
+  width: 100%;
+  white-space: normal;
+}
+
+.cardTags {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--margin-tiny, 0.25rem);
+}
+
+.cardTags custom-chip {
+    margin: var(--margin-tiny, 0.25rem);
+}
+/* END: Card */
 
 @media only screen and (max-width: 600px) {
   body {
@@ -32,10 +103,11 @@ body {
   }
 
   .card {
-    margin: 0 !important;
-    margin-top: 0.8rem !important;
-    min-width: 90% !important;
-    width: 70vw !important;
+    
+    margin: 0;
+    margin-top: 0.8rem;
+    min-width: 90%;
+    width: 70vw;
   }
 
   .laneSection {
@@ -106,10 +178,27 @@ body {
   box-shadow: rgba(72, 95, 199, .25) 0 0 0 .125em;
 }
 
-.danger {
-  background-color: #FF0505 !important;
-  border: 1px solid #b5b5b5 !important;
-  color: white !important;
+.deleteButton {
+  border: none;
+  background-color: var(--background-color);
+  color: var(--danger-color);
+  width: var(--button-small-width);
+    height: var(--button-small-height);
+  cursor: pointer;
+  float: right;
+}
+
+.deleteButton svg {
+  fill: var(--danger-color);
+  color: var(--danger-color);
+  width: var(--button-small-width);
+  height: var(--button-small-height);
+}
+
+
+
+.right {
+  float: right;
 }
 /*END: https://getcssscan.com/css-buttons-examples*/
 
