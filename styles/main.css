@@ -125,7 +125,7 @@ form * {
 form input, form textarea {
   border-radius : 8px;
   border: 2px solid #DDDDDD;
-  width : 25vw;
+  width : 50vw;
   background-color : white;
   height: 1.5rem;
 }
