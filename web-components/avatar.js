@@ -1,3 +1,5 @@
+import CustomWebComponent from './CustomWebComponent.js'
+
 class Avatar extends CustomWebComponent {
     static observedAttributes = ['name', 'src', 'alt'];
 

@@ -1,3 +1,5 @@
+import CustomWebComponent from "./CustomWebComponent.js";
+
 class Card extends CustomWebComponent {
     static observedAttributes = ['title', 'description', 'people', 'tasks', 'tags', 'remove'];
 

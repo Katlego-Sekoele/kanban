@@ -1,4 +1,6 @@
-class Lane extends HTMLElement {
+import CustomWebComponent from "./CustomWebComponent.js";
+
+class Lane extends CustomWebComponent {
     static observedAttributes = ['name'];
 
     constructor() {

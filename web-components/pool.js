@@ -1,3 +1,5 @@
+import CustomWebComponent from "./CustomWebComponent.js";
+
 class Pool extends CustomWebComponent {
     static observedAttributes = ['name', 'description'];
 

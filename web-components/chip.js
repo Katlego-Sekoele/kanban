@@ -1,3 +1,5 @@
+import CustomWebComponent from "./CustomWebComponent.js";
+
 const defaultColors = [
     '#77DD77',
     '#bee7a5',

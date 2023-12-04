@@ -1,4 +1,4 @@
-class CustomWebComponent extends HTMLElement {
+export default class CustomWebComponent extends HTMLElement {
     constructor() {
         super();
     }
