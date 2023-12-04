@@ -7,6 +7,53 @@ body {
   min-height: 90vh;
   height: 90vh;
   margin: 2rem;
+  max-width: 85vw;
+}
+
+@media only screen and (max-width: 600px) {
+  body {
+    min-height: 90vh;
+    height: 90vh;
+    margin: 0.5rem;
+    max-width: 90vw;
+  }
+
+  .lanesDiv {
+    /*flex-direction: column;*/
+    overflow-x: hidden !important;
+    white-space: normal !important;
+    padding: 0.5rem !important;
+    margin: 0 !important;
+    margin-top: 1rem !important;
+  }
+
+  .boardDiv {
+    padding: 0 !important;
+  }
+
+  .card {
+    margin: 0 !important;
+    margin-top: 0.8rem !important;
+    min-width: 90% !important;
+    width: 70vw !important;
+  }
+
+  .laneSection {
+    margin-top: 0.8rem !important;
+    margin-right: 0 !important;
+  }
+
+  form {
+    width: 90%;
+  }
+
+  form input[type="text"] {
+    width: 100%;
+  }
+
+  form textarea {
+    min-width: 100%;
+  }
 }
 
 /* START: https://getcssscan.com/css-buttons-examples*/
@@ -126,7 +173,7 @@ form input, form textarea {
   right: 0.8rem;
   background-color: #fff;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  min-width: 10vw;
+  min-width: 200px;
   border-radius: 0.5rem;
 }
 

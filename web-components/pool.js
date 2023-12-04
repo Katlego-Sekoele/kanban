@@ -5,6 +5,15 @@ class Pool extends HTMLElement {
         super();
     }
 
+    loadStyles(url, shadow) {
+        const link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.href = url;
+
+        // Append the link element to the shadow DOM
+        shadow.appendChild(link);
+    }
+
     connectedCallback() {
 
         // Create a shadow root
@@ -14,6 +23,7 @@ class Pool extends HTMLElement {
         mainDiv.style.width = '100%'
         mainDiv.style.height = '100%'
         mainDiv.style.padding = '1.5rem'
+        mainDiv.setAttribute('class', 'boardDiv')
 
         if (this.getAttribute('name')) {
             let titleDiv = document.createElement("header")
@@ -41,9 +51,11 @@ class Pool extends HTMLElement {
         let lanesDiv = document.createElement("div")
         let lanesSlot = document.createElement('slot')
         lanesSlot.setAttribute('name', 'lanes')
+        lanesDiv.setAttribute('class', 'lanesDiv')
         lanesDiv.appendChild(lanesSlot)
         mainDiv.appendChild(lanesDiv)
-        lanesDiv.style.width = '95%'
+        lanesDiv.style.width = '100%'
+        lanesDiv.style.maxWidth = '100%'
         lanesDiv.style.padding = '1rem'
         lanesDiv.style.margin = '0.7rem'
         lanesDiv.style.borderRadius = '12px'
@@ -51,6 +63,8 @@ class Pool extends HTMLElement {
         lanesDiv.style.overflowX = 'auto'
         lanesDiv.style.whiteSpace = 'nowrap'
         lanesDiv.style.minHeight = '65vh'
+
+        this.loadStyles('../styles/main.css', shadow);
 
         shadow.appendChild(mainDiv)
     }

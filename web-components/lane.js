@@ -16,6 +16,7 @@ class Lane extends HTMLElement {
         mainDiv.style.marginRight = '1rem'
         mainDiv.style.display = 'inline-block'
         mainDiv.style.verticalAlign = 'top'
+        mainDiv.setAttribute('class', 'laneSection')
 
         if (this.getAttribute('name')) {
             let titleChip = document.createElement("custom-chip")
@@ -31,6 +32,8 @@ class Lane extends HTMLElement {
         mainDiv.appendChild(cardsDiv)
         cardsDiv.style.width = '100%'
 
+        this.loadStyles('../styles/main.css', shadow);
+
         shadow.appendChild(mainDiv)
     }
 
@@ -45,6 +48,15 @@ class Lane extends HTMLElement {
     attributeChangedCallback(name, oldValue, newValue) {
         console.log(`Attribute ${name} has changed.`);
 
+    }
+
+    loadStyles(url, shadow) {
+        const link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.href = url;
+
+        // Append the link element to the shadow DOM
+        shadow.appendChild(link);
     }
 
 }

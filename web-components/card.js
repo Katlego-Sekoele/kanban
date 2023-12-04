@@ -5,6 +5,15 @@ class Card extends HTMLElement {
         super();
     }
 
+    loadStyles(url, shadow) {
+        const link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.href = url;
+
+        // Append the link element to the shadow DOM
+        shadow.appendChild(link);
+    }
+
     set onRemoveTask(callback) {
         this._onRemoveTask = callback;
     }
@@ -20,12 +29,12 @@ class Card extends HTMLElement {
         mainDiv.style.borderColor = '#DDDDDD'
         mainDiv.style.borderStyle = 'solid'
         mainDiv.style.width = '25vw'
-        mainDiv.style.minWidth = '300px'
         mainDiv.style.height = 'fit-content'
         mainDiv.style.padding = '1.5rem'
         mainDiv.style.margin = '1rem'
         mainDiv.style.backgroundColor = 'white'
         // mainDiv.style.boxShadow = '0px 0px 18px 1px grey'
+        mainDiv.setAttribute('class', 'card')
 
         let titleDiv = document.createElement("div");
         mainDiv.appendChild(titleDiv);
@@ -50,7 +59,7 @@ class Card extends HTMLElement {
             this.remove();
         };
 
-        titleDiv.appendChild(deleteButton);
+        mainDiv.appendChild(deleteButton);
 
 
         if (this.getAttribute('title')) {
@@ -100,6 +109,8 @@ class Card extends HTMLElement {
             }
 
         }
+
+        this.loadStyles('../styles/main.css', shadow);
 
         shadow.appendChild(mainDiv)
     }

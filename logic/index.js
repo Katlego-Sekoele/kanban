@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function() {
         for (const lane of lanes) {
             board.addLane(lane.name, [])
             for (const task of lane.tasks) {
-                board.lanes.find(laneInBoard => laneInBoard.name === lane.name).addTask(task.name, task.description, task.people, task.tags, save)
+                board.lanes.find(laneInBoard => laneInBoard.name.toLowerCase() === lane.name.toLowerCase()).addTask(task.name, task.description, task.people, task.tags, save)
             }
         }
 
@@ -81,7 +81,7 @@ document.addEventListener('DOMContentLoaded', function() {
         let laneName = prompt("Name of lane")
 
         if (!laneName) return
-        board.lanes.find(lane => lane.name === laneName).addTask(taskName, taskDescription, [], taskTags, save)
+        board.lanes.find(lane => lane.name.toLowerCase() === laneName.toLowerCase()).addTask(taskName, taskDescription, [], taskTags, save)
 
         save()
     }
