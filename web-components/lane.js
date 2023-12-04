@@ -10,7 +10,7 @@ class Lane extends HTMLElement {
         // Create a shadow root
         const shadow = this.attachShadow({ mode: "open" });
 
-        let mainDiv = document.createElement("div");
+        let mainDiv = document.createElement("section");
         mainDiv.style.width = 'fit-content'
         mainDiv.style.minHeight = 'inherit'
         mainDiv.style.marginRight = '1rem'

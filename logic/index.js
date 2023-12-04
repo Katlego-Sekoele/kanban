@@ -65,6 +65,7 @@ document.addEventListener('DOMContentLoaded', function() {
             laneName = prompt("Name of lane")
         }
 
+        if (!laneName) return
         board.addLane(laneName, [])
 
         save()
@@ -73,10 +74,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
     document.getElementById('addTaskBtn').onclick = () => {
         let taskName = prompt("Name of task")
+        if (!taskName) return
+
         let taskDescription = prompt("Description of task")
         let taskTags = prompt("Tags of task").split(',')
         let laneName = prompt("Name of lane")
 
+        if (!laneName) return
         board.lanes.find(lane => lane.name === laneName).addTask(taskName, taskDescription, [], taskTags, save)
 
         save()

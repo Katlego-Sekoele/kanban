@@ -16,7 +16,7 @@ class Pool extends HTMLElement {
         mainDiv.style.padding = '1.5rem'
 
         if (this.getAttribute('name')) {
-            let titleDiv = document.createElement("div")
+            let titleDiv = document.createElement("header")
             mainDiv.appendChild(titleDiv)
             titleDiv.style.width = '100%'
             let titleh1 = document.createElement("h1")
@@ -25,7 +25,7 @@ class Pool extends HTMLElement {
         }
 
         if (this.getAttribute('description')) {
-            let descriptionDiv = document.createElement("div")
+            let descriptionDiv = document.createElement("section")
             mainDiv.appendChild(descriptionDiv)
             descriptionDiv.style.width = '100%'
             let descriptionP = document.createElement("p")
@@ -33,7 +33,7 @@ class Pool extends HTMLElement {
             descriptionP.textContent = this.getAttribute('description')
         }
 
-        let contentDiv = document.createElement("div")
+        let contentDiv = document.createElement("main")
         contentDiv.setAttribute('id', 'boardContentDiv')
         mainDiv.appendChild(contentDiv)
 
