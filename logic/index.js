@@ -58,17 +58,30 @@ document.addEventListener('DOMContentLoaded', function() {
 
     document.getElementById('createLaneBtn').onclick = () => {
 
-        let laneName = prompt("Name of lane")
+        let dialog = document.getElementById('laneFormDialog')
 
-        while (board.laneNames.findLast(lane => lane === laneName)) {
-            alert('Lane name already exists')
-            laneName = prompt("Name of lane")
+        dialog.showModal()
+
+        document.getElementById('cancelLaneAdd').onclick = () => {
+            dialog.close()
         }
 
-        if (!laneName) return
-        board.addLane(laneName, [])
+        document.getElementById('submitLane').onclick = () => {
 
-        save()
+            let laneName = document.getElementById('laneName').value
+
+            if (board.laneNames.findLast(lane => lane.toLowerCase() === laneName.toLowerCase())) {
+                alert('Lane name already exists')
+                return
+            }
+
+            if (!laneName) return
+            board.addLane(laneName, [])
+
+            dialog.close()
+            save()
+
+        }
 
     }
 
