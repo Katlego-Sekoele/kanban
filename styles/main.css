@@ -103,9 +103,9 @@ body {
 }
 
 .danger {
-  background-color: #FF0505;
-  border: 1px solid #b5b5b5;
-  color: white;
+  background-color: #FF0505 !important;
+  border: 1px solid #b5b5b5 !important;
+  color: white !important;
 }
 /*END: https://getcssscan.com/css-buttons-examples*/
 

@@ -51,6 +51,7 @@ class Card extends HTMLElement {
         deleteButton.style.fontWeight = 'bold';
         deleteButton.style.backgroundColor = 'white';
         deleteButton.style.borderRadius = '50%';
+        deleteButton.setAttribute('class', 'btn danger')
         deleteButton.onclick = () => {
             // Call the remove task callback if it exists
             if (this._onRemoveTask) {
