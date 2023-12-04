@@ -1,4 +1,4 @@
-class Avatar extends HTMLElement {
+class Avatar extends CustomWebComponent {
     static observedAttributes = ['name', 'src', 'alt'];
 
     constructor() {

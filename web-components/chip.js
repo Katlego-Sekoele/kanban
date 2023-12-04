@@ -9,7 +9,7 @@ const defaultColors = [
 const getColor = () =>  defaultColors[Math.floor(Math.random() * defaultColors.length)];
 
 
-class Chip extends HTMLElement {
+class Chip extends CustomWebComponent {
     static observedAttributes = ["color", "background-color", 'text'];
 
     constructor() {

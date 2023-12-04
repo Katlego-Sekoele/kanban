@@ -47,15 +47,12 @@ class Lane extends HTMLElement {
 
     attributeChangedCallback(name, oldValue, newValue) {
         console.log(`Attribute ${name} has changed.`);
-
     }
 
     loadStyles(url, shadow) {
         const link = document.createElement('link');
         link.rel = 'stylesheet';
         link.href = url;
-
-        // Append the link element to the shadow DOM
         shadow.appendChild(link);
     }
 

@@ -1,17 +1,8 @@
-class Pool extends HTMLElement {
+class Pool extends CustomWebComponent {
     static observedAttributes = ['name', 'description'];
 
     constructor() {
         super();
-    }
-
-    loadStyles(url, shadow) {
-        const link = document.createElement('link');
-        link.rel = 'stylesheet';
-        link.href = url;
-
-        // Append the link element to the shadow DOM
-        shadow.appendChild(link);
     }
 
     connectedCallback() {

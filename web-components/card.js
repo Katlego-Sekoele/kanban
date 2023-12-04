@@ -1,4 +1,4 @@
-class Card extends HTMLElement {
+class Card extends CustomWebComponent {
     static observedAttributes = ['title', 'description', 'people', 'tasks', 'tags', 'remove'];
 
     constructor() {
@@ -114,7 +114,6 @@ class Card extends HTMLElement {
         }
 
         this.loadStyles('styles/main.css', shadow);
-
         shadow.appendChild(mainDiv)
     }
 
