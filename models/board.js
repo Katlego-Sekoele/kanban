@@ -45,7 +45,6 @@ export default class Board {
         let lane = new Lane(name, tasks)
         this.laneNames.push(name)
         this.lanes.push(lane)
-        console.log(lane)
         lane.attachLaneToBoard(this.lanesDiv)
     }
 }
