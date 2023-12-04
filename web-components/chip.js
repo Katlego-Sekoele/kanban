@@ -24,7 +24,7 @@ class Chip extends CustomWebComponent {
         let div = document.createElement('div')
         let chip = document.createElement('span');
         chip.setAttribute('aria-label', 'Task tag')
-        
+
         // text
         let text;
         if (this.hasAttribute("text")) {

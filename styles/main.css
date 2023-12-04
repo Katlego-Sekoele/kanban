@@ -48,6 +48,21 @@ body {
   max-width: 85vw;
 }
 
+/* START: Lane */
+.laneSection {
+  width: fit-content;
+  min-height: inherit;
+  min-width: var(--card-width-desktop, 25vw);
+  margin-right: var(--margin-large, 1rem);
+  vertical-align: top;
+  display: inline-block;
+}
+
+.laneSection div {
+  width: fit-content;
+}
+/* END: Lane */
+
 /* START: Chip */
 .chip { 
   border-radius: var(--chip-border-radius, 1rem);
@@ -100,31 +115,21 @@ body {
     max-width: 90vw;
   }
 
-  .lanesDiv {
-    /*flex-direction: column;*/
-    overflow-x: hidden !important;
-    white-space: normal !important;
-    padding: 0.5rem !important;
-    margin: 0 !important;
-    margin-top: 1rem !important;
-  }
-
-  .boardDiv {
-    padding: 0 !important;
-  }
-
+  /* START: Card */
   .card {
-    
-    margin: 0;
-    margin-top: 0.8rem;
+    margin: var(--margin-large, 1rem) 0 0;
     min-width: 90%;
-    width: 70vw;
+    width: var(--card-width-mobile, 70vw);
   }
+  /* END: Card */
 
+
+  /* START: Lane */
   .laneSection {
-    margin-top: 0.8rem !important;
-    margin-right: 0 !important;
+    margin-top: var(--margin-large, 1rem);
+    display: block;
   }
+  /* END: Lane */
 
   form {
     width: 90%;
