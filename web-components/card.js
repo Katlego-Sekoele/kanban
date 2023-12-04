@@ -20,6 +20,7 @@ class Card extends HTMLElement {
         mainDiv.style.borderColor = '#DDDDDD'
         mainDiv.style.borderStyle = 'solid'
         mainDiv.style.width = '25vw'
+        mainDiv.style.minWidth = '300px'
         mainDiv.style.height = 'fit-content'
         mainDiv.style.padding = '1.5rem'
         mainDiv.style.margin = '1rem'
@@ -64,6 +65,7 @@ class Card extends HTMLElement {
             let descriptionDiv = document.createElement("div")
             mainDiv.appendChild(descriptionDiv)
             descriptionDiv.style.width = '100%'
+            descriptionDiv.style.whiteSpace = 'normal';
             let descriptionP = document.createElement("p")
             descriptionDiv.appendChild(descriptionP)
             descriptionP.textContent = this.getAttribute('description')
