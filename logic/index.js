@@ -25,6 +25,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // get truthy lanes
         const lanes = boardParsed.lanes.filter(lane => lane.name)
+        if (lanes.length) show('addTaskBtn', 'block')
 
         // create pool and task to lanes
         board.createPool()
@@ -62,8 +63,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
     document.getElementById('createLaneBtn').onclick = () => {
 
-        const dialog = document.getElementById('laneFormDialog')
-        dialog.showModal()
+        toggle('menu')
+        laneFormDialog.showModal()
 
     }
 
@@ -86,17 +87,20 @@ document.addEventListener('DOMContentLoaded', function() {
         updateLaneSelectElement()
         save()
 
+        show('addTaskBtn', 'block')
+
     }
 
     document.getElementById('taskTags').onkeydown = (e) => {
         if (e.key === 'Enter') {
-            let tag = this.value
+           let input = document.getElementById('taskTags')
+            let tag = input.value
             if (!tag) return
 
             let chip = document.createElement('custom-chip')
             chip.setAttribute('text', tag)
             document.getElementById('selectedTags').appendChild(chip)
-            this.value = ''
+            input.value = ''
             chip.onclick = () => {
                 chip.remove()
             }
@@ -108,9 +112,19 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     document.getElementById('addTaskBtn').onclick = () => {
-
+        toggle('menu')
         taskFormDialog.showModal()
+    }
 
+    document.getElementById('deleteBoardBtn').onclick = () => {
+        let boardElement = document.getElementById(board.name)
+        boardElement.remove()
+        board = undefined
+        localStorage.removeItem('board')
+        show('MainDiv', 'flex')
+        show('createBoardButton')
+        hide('fabContainer')
+        hide('addTaskBtn')
     }
 
     document.getElementById('submitTask').onclick = () => {

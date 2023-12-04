@@ -48,6 +48,7 @@
   --full-width: 90vw;
   --80-width: 80vw;
   --full-height: 90vh;
+  --half-width: 50vw;
 
   /* positioning */
   --right-edge: 3rem;
@@ -255,6 +256,7 @@ body {
   vertical-align: top;
   white-space: nowrap;
   margin: var(--margin-tiny);
+  width: fit-content;
 }
 
 .deleteButton {
@@ -294,6 +296,10 @@ body {
 }
 
 /* START: Forms */
+form {
+  width: var(--half-width, 50vw);
+}
+
 form * {
   margin-bottom: 1rem;
 }
