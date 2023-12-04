@@ -4,6 +4,7 @@ export default class Board {
     name
     description
     lanes
+    laneNames
     lanesDiv
 
     constructor(name, description, lanes) {
@@ -11,6 +12,7 @@ export default class Board {
         this.description = description
         this.lanes = lanes
         this.lanesDiv = undefined
+        this.laneNames = lanes.map(lane => lane.name)
     }
 
     get pool () {
@@ -39,6 +41,7 @@ export default class Board {
 
     addLane(name, tasks) {
         let lane = new Lane(name, tasks)
+        this.laneNames.push(name)
         this.lanes.push(lane)
         console.log(lane)
         lane.attachToBoard(this.lanesDiv)

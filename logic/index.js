@@ -31,7 +31,14 @@ document.addEventListener('DOMContentLoaded', function() {
 
     document.getElementById('createLaneBtn').onclick = () => {
 
-        board.addLane('Todo', [new Lane('Default', []),])
+        let laneName = prompt("Name of lane")
+        
+        while (board.laneNames.findLast(lane => lane === laneName)) {
+            alert('Lane name already exists')
+            laneName = prompt("Name of lane")
+        }
+
+        board.addLane(laneName, [])
 
     }
 
