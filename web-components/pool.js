@@ -8,34 +8,31 @@ class Pool extends CustomWebComponent {
     }
 
     connectedCallback() {
-
-        // Create a shadow root
         const shadow = this.attachShadow({ mode: "open" });
 
+        // container
         let mainDiv = document.createElement("div");
-        mainDiv.style.width = '100%'
-        mainDiv.style.height = '100%'
-        mainDiv.style.padding = '1.5rem'
-        mainDiv.setAttribute('class', 'boardDiv')
+        mainDiv.setAttribute('class', 'board')
 
+        // title
         if (this.getAttribute('name')) {
             let titleDiv = document.createElement("header")
+            let title = document.createElement("h1")
+            title.textContent = this.getAttribute('name')
+            titleDiv.appendChild(title)
             mainDiv.appendChild(titleDiv)
-            titleDiv.style.width = '100%'
-            let titleh1 = document.createElement("h1")
-            titleDiv.appendChild(titleh1)
-            titleh1.textContent = this.getAttribute('name')
         }
 
+        // description
         if (this.getAttribute('description')) {
             let descriptionDiv = document.createElement("section")
-            mainDiv.appendChild(descriptionDiv)
-            descriptionDiv.style.width = '100%'
             let descriptionP = document.createElement("p")
-            descriptionDiv.appendChild(descriptionP)
             descriptionP.textContent = this.getAttribute('description')
+            descriptionDiv.appendChild(descriptionP)
+            mainDiv.appendChild(descriptionDiv)
         }
 
+        // content
         let contentDiv = document.createElement("main")
         contentDiv.setAttribute('id', 'boardContentDiv')
         mainDiv.appendChild(contentDiv)
@@ -44,34 +41,12 @@ class Pool extends CustomWebComponent {
         let lanesDiv = document.createElement("div")
         let lanesSlot = document.createElement('slot')
         lanesSlot.setAttribute('name', 'lanes')
-        lanesDiv.setAttribute('class', 'lanesDiv')
+        lanesDiv.setAttribute('class', 'boardLanes')
         lanesDiv.appendChild(lanesSlot)
-        mainDiv.appendChild(lanesDiv)
-        lanesDiv.style.width = '100%'
-        lanesDiv.style.maxWidth = '100%'
-        lanesDiv.style.padding = '1rem'
-        lanesDiv.style.margin = '0.7rem'
-        lanesDiv.style.borderRadius = '12px'
-        lanesDiv.style.backgroundColor = '#F8F8F8'
-        lanesDiv.style.overflowX = 'auto'
-        lanesDiv.style.whiteSpace = 'nowrap'
-        lanesDiv.style.minHeight = '65vh'
 
         this.loadStyles('styles/main.css', shadow);
+        mainDiv.appendChild(lanesDiv)
         shadow.appendChild(mainDiv)
-    }
-
-    disconnectedCallback() {
-        // console.log("Custom element removed from page.");
-    }
-
-    adoptedCallback() {
-        // console.log("Custom element moved to new page.");
-    }
-
-    attributeChangedCallback(name, oldValue, newValue) {
-        console.log(`Attribute ${name} has changed.`);
-
     }
 
 }

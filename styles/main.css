@@ -13,6 +13,7 @@
   --info-color: #17a2b8;
   --warning-color: #ffc107;
   --danger-color: #dc3545;
+  --board-color: #F8F8F8;
 
   /* borders */
   --border-radius: 8px;
@@ -22,19 +23,26 @@
 
   /* paddings */
   --padding-small: 0.5rem;
+  --padding-medium: 1rem;
   --padding-large: 1.5rem;
 
   /* margins */
   --margin-large: 1rem;
   --margin-xlarge: 2rem;
   --margin-tiny: 0.25rem;
+  --margin-xtiny: 0.125rem;
 
   /* sizing */
   --card-width-desktop: 25vw;
-  --card-width-mobile: 70vw;
+  --card-width-mobile: 80vw;
+  --card-width-tiny: 60vw;
   --button-small-width: 1.5rem;
   --button-small-height: 1.5rem;
   --chip-height: 0.8rem;
+  /* div sizings */
+  --full-width: 90vw;
+  --80-width: 80vw;
+  --full-height: 90vh;
 }
 
 * {
@@ -42,11 +50,38 @@
 }
 
 body {
-  min-height: 90vh;
-  height: 90vh;
+  min-height: var(--full-height, 90vh);
+  height: var(--full-height, 90vh);
   margin: var(--margin-xlarge, 2rem);
-  max-width: 85vw;
+  width:  max(var(--full-width, 90vw), fit-content);
 }
+
+/* START: Board */
+.board {
+  min-width: var(--full-width, 90vw);
+  width: fit-content;
+  height: var(--full-height, 90vh);
+  padding: var(--padding-large, 1.5rem);
+}
+
+.board header, .board section {
+  width: var(--full-width, 90vw);
+}
+
+.boardLanes {
+  max-width: var(--full-width, 90vw);
+  width: var(--full-width, 90vw);
+  padding: var(--padding-medium, 1rem);
+  margin-top: var(--margin-large, 1rem);
+  margin-right: var(--margin-large, 1rem);
+  margin-left: 0;
+  border-radius: var(--border-radius, 8px);
+  background-color: var(--board-color, #F8F8F8);
+  overflow-x: auto;
+  white-space: nowrap;
+  min-height: 70vh;
+}
+/* END: Board */
 
 /* START: Lane */
 .laneSection {
@@ -107,19 +142,41 @@ body {
 }
 /* END: Card */
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 760px) {
   body {
     min-height: 90vh;
     height: 90vh;
-    margin: 0.5rem;
-    max-width: 90vw;
+    margin: 0;
+    padding: var(--padding-small, 1rem);
+    width: var(--full-width, 90vw);
+    max-width: var(--full-width, 90vw);
   }
+
+  /* START: Board */
+  .board {
+    width: var(--80-width, 80vw);
+    min-width: 0;
+    padding: var(--padding-small, 1rem);
+  }
+
+  .boardLanes {
+    min-width: var(--full-width, 90vw);
+    padding: var(--padding-medium, 1rem);
+    margin-top: var(--margin-large, 1rem);
+    margin-right: 0;
+    margin-left: 0;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+  /* END: Board */
 
   /* START: Card */
   .card {
     margin: var(--margin-large, 1rem) 0 0;
-    min-width: 90%;
     width: var(--card-width-mobile, 70vw);
+    max-width: var(--card-width-mobile, 70vw);
+    min-width: var(--card-width-mobile, 70vw);
+    padding: var(--padding-medium, 1rem);
   }
   /* END: Card */
 
@@ -147,6 +204,29 @@ body {
     min-width: 100%;
   }
 }
+
+@media only screen and (max-width: 470px) {
+  body {
+    min-width: 0;
+    padding-left: var(--margin-xtiny);
+    padding-right: var(--margin-xtiny);
+  }
+
+  /* START: Board */
+
+  .boardLanes {
+    padding: var(--padding-small);
+    margin-top: var(--margin-tiny);
+  }
+  /* END: Board */
+
+  /* START: Card */
+  .card {
+    margin: var(--margin-tiny, 1rem) 0 0;
+  }
+  /* END: Card */
+}
+
 
 /* START: https://getcssscan.com/css-buttons-examples*/
 .btn {
