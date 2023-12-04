@@ -38,6 +38,10 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
 
+        if (localStorage.getItem('darkMode') === 'true') {
+            document.body.classList.add('dark')
+        }
+
     }
 
     // START: Click listeners
@@ -129,6 +133,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
     document.getElementById('toggleDarkModeBtn').onclick = () => {
         document.body.classList.toggle("dark");
+
+        if (document.body.classList.contains("dark")) {
+            localStorage.setItem('darkMode', 'true')
+        } else {
+            localStorage.setItem('darkMode', 'false');
+        }
     }
 
     document.getElementById('submitTask').onclick = () => {
