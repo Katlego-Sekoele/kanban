@@ -127,6 +127,10 @@ document.addEventListener('DOMContentLoaded', function() {
         hide('addTaskBtn')
     }
 
+    document.getElementById('toggleDarkModeBtn').onclick = () => {
+        document.body.classList.toggle("dark");
+    }
+
     document.getElementById('submitTask').onclick = () => {
 
         let inputTaskName = document.getElementById('taskName').value

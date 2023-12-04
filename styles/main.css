@@ -55,6 +55,39 @@
   --bottom-edge: 3rem;
 }
 
+.dark {
+    transition: background-color 0.3s ease;
+
+    /* Text colors */
+    --light-text-color: black;
+    --dark-text-color: white;
+
+    /* Background and border colors */
+    --background-color: #1a1a1a;
+    --border-color: #444444;
+
+    /* Primary color */
+    --primary-color: #3498db;
+
+    /* Secondary color */
+    --secondary-color: #b0bec5;
+
+    /* Success color */
+    --success-color: #4caf50;
+
+    /* Info color */
+    --info-color: #2196f3;
+
+    /* Warning color */
+    --warning-color: #ff9800;
+
+    /* Danger color */
+    --danger-color: #e74c3c;
+
+    /* Board color */
+    --board-color: #333333;
+}
+
 * {
 
 }
@@ -62,16 +95,17 @@
 body {
   min-height: var(--full-height, 90vh);
   height: var(--full-height, 90vh);
-  margin: var(--margin-xlarge, 2rem);
+  padding: var(--padding-large, 1.5rem);
   width:  max(var(--full-width, 90vw), fit-content);
+  color: var(--dark-text-color);
+  background-color: var(--background-color);
+  transition: background-color 0.3s ease;
 }
 
 /* START: Board */
 .board {
   min-width: var(--full-width, 90vw);
-  width: fit-content;
-  height: var(--full-height, 90vh);
-  padding: var(--padding-large, 1.5rem);
+  max-width: var(--full-width, 90vw);
 }
 
 .board header, .board section {
@@ -114,6 +148,7 @@ body {
   height: var(--chip-height, 0.8rem);
   width: fit-content;
   padding: var(--padding-small, 0.5rem);
+  color: var(--light-text-color);
 }
 /* END: Chip */
 
@@ -127,7 +162,8 @@ body {
   height: fit-content;
   padding: var(--padding-large, 1.5rem);
   margin: var(--margin-large, 1rem);
-  background-color: white;
+  background-color: var(--background-color);
+    color: var(--dark-text-color);
 }
 
 .cardTitle {
@@ -243,6 +279,7 @@ body {
   align-items: center;
   appearance: none;
   background-color: var(--background-color);
+  color: var(--dark-text-color);
   border: var(--border-width-small) solid var(--border-color);
   border-radius: var(--border-radius);
   box-shadow: none;
@@ -298,6 +335,8 @@ body {
 /* START: Forms */
 form {
   width: var(--half-width, 50vw);
+  color: var(--dark-text-color);
+  background-color: var(--background-color);
 }
 
 form * {
@@ -335,6 +374,17 @@ form input, form textarea, form select {
 
 dialog{
   max-width: 50vw;
+  background-color: var(--background-color);
+  border: var(--border-width) solid var(--border-color);
+}
+
+input[type="text"],
+textarea,
+select,
+option {
+  background-color: var(--background-color) !important;
+  color: var(--dark-text-color) !important;
+  border: 1px solid var(--border-color) !important;
 }
 /* END: Forms */
 
