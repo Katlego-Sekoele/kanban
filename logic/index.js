@@ -21,12 +21,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
         document.getElementById('MainDiv').setAttribute('class', '')
         document.getElementById('fabContainer').style.display = 'block'
-        let pool = board.pool
+        board.createPool()
 
         for (const lane of lanes) {
             board.addLane(lane.name, [])
             for (const task of lane.tasks) {
-                board.lanes.find(laneInBoard => laneInBoard.name.toLowerCase() === lane.name.toLowerCase()).addTask(task.name, task.description, task.people, task.tags, save)
+                board.lanes.find(laneInBoard => laneInBoard.name.toLowerCase() === lane.name.toLowerCase()).addTaskToBoard(task.name, task.description, task.people, task.tags, save)
             }
         }
 
@@ -131,7 +131,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 taskTags.push(chipElement.getAttribute('text'))
             }
             if (!taskLane) return
-            board.lanes.find(lane => lane.name.toLowerCase() === taskLane.toLowerCase()).addTask(taskName, taskDescription, [], taskTags, save)
+            board.lanes.find(lane => lane.name.toLowerCase() === taskLane.toLowerCase()).addTaskToBoard(taskName, taskDescription, [], taskTags, save)
 
             dialog.close()
             save()
@@ -153,7 +153,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         board = new Board(name, description, [])
 
-        let pool = board.pool
+        board.createPool()
 
         document.getElementById('MainDiv').setAttribute('class', '')
 

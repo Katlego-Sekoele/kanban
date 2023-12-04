@@ -1,3 +1,6 @@
+/**
+ * under construction
+ */
 export default class Person {
     name
     image

@@ -12,7 +12,7 @@ export default class Task {
         this.tags = tags
     }
 
-    get Card() {
+    createCard() {
         if (document.getElementById(this.name)) return document.getElementById(this.name)
 
         let card = document.createElement('custom-card')

@@ -37,7 +37,7 @@ class Pool extends CustomWebComponent {
         contentDiv.setAttribute('id', 'boardContentDiv')
         mainDiv.appendChild(contentDiv)
 
-
+        // lanes slot
         let lanesDiv = document.createElement("div")
         let lanesSlot = document.createElement('slot')
         lanesSlot.setAttribute('name', 'lanes')

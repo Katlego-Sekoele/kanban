@@ -10,21 +10,10 @@ export default class Lane {
         this.tasks = tasks
     }
 
-    get lane() {
-        console.log('document.getElementById(this.name)', document.getElementById(this.name))
-        if (document.getElementById(this.name)) return document.getElementById(this.name)
-
-        let lane = document.createElement('custom-lane');
-        lane.setAttribute('id', this.name)
-        lane.setAttribute('name', this.name);
-        console.log('created Lane div')
-        return lane;
-    }
-
-    addTask (name, description, people, tags, saveFunction) {
+    addTaskToBoard (name, description, people, tags, saveFunction) {
         let task = new Task(name, description, people, tags)
         this.tasks.push(task)
-        let card = task.Card
+        let card = task.createCard()
         card.onRemoveTask = () => {
             this.tasks = this.tasks.filter(task => task.name !== name)
             saveFunction()
@@ -33,7 +22,7 @@ export default class Lane {
         cardsSlot.appendChild(card)
     }
 
-    attachToBoard = (laneSlot) =>{
+    attachLaneToBoard(laneSlot) {
         let lane = document.createElement('custom-lane');
         lane.setAttribute('id', this.name)
         lane.setAttribute('name', this.name);

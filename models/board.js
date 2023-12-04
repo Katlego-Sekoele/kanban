@@ -15,30 +15,30 @@ export default class Board {
         this.laneNames = lanes.map(lane => lane.name)
     }
 
-    get pool () {
+    createPool () {
         if (document.getElementById(this.name)) return document.getElementById(this.name);
 
+        // Create a custom pool element
         let pool = document.createElement('custom-pool')
         pool.setAttribute('id', this.name)
         pool.setAttribute('name', this.name)
         pool.setAttribute('description', this.description)
 
+        // Create a slot element
         this.lanesDiv = document.createElement('div')
         this.lanesDiv.setAttribute('slot', 'lanes')
         this.lanesDiv.setAttribute('id', 'lanes')
 
-        console.log('this.lanes', this.lanes)
-
+        // Create a lane element for each lane
         for (const lane in this.lanes) {
             this.addLane(lane.name, lane.tasks)
         }
 
+        // Append the slot element to the pool element
         pool.appendChild(this.lanesDiv)
 
         // Append the pool element to the document
         document.getElementById('MainDiv').appendChild(pool);
-
-        return pool
     }
 
     addLane(name, tasks) {
@@ -46,6 +46,6 @@ export default class Board {
         this.laneNames.push(name)
         this.lanes.push(lane)
         console.log(lane)
-        lane.attachToBoard(this.lanesDiv)
+        lane.attachLaneToBoard(this.lanesDiv)
     }
 }
