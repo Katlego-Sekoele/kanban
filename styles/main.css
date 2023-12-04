@@ -38,11 +38,20 @@
   --card-width-tiny: 60vw;
   --button-small-width: 1.5rem;
   --button-small-height: 1.5rem;
+  --button-medium-height: 2rem;
+  --button-height: 4rem;
+  --button-width: 4rem;
   --chip-height: 0.8rem;
-  /* div sizings */
+  --menu-width: 10rem;
+
+  /* div sizing */
   --full-width: 90vw;
   --80-width: 80vw;
   --full-height: 90vh;
+
+  /* positioning */
+  --right-edge: 3rem;
+  --bottom-edge: 3rem;
 }
 
 * {
@@ -188,6 +197,7 @@ body {
   }
   /* END: Lane */
 
+  /* START: Forms */
   form {
     width: 90%;
   }
@@ -203,6 +213,7 @@ body {
   form select {
     min-width: 100%;
   }
+    /* END: Forms */
 }
 
 @media only screen and (max-width: 470px) {
@@ -213,7 +224,6 @@ body {
   }
 
   /* START: Board */
-
   .boardLanes {
     padding: var(--padding-small);
     margin-top: var(--margin-tiny);
@@ -227,51 +237,24 @@ body {
   /* END: Card */
 }
 
-
-/* START: https://getcssscan.com/css-buttons-examples*/
+/* START: Buttons */
 .btn {
   align-items: center;
   appearance: none;
-  background-color: #fff;
-  border: 1px solid #dbdbdb;
-  border-radius: .375em;
+  background-color: var(--background-color);
+  border: var(--border-width-small) solid var(--border-color);
+  border-radius: var(--border-radius);
   box-shadow: none;
-  box-sizing: border-box;
   cursor: pointer;
   display: inline-flex;
-  font-family: BlinkMacSystemFont,-apple-system,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Fira Sans","Droid Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
-  font-size: 1rem;
-  height: 2.5em;
   justify-content: center;
+  height: var(--button-medium-height);
   line-height: 1.5;
-  padding: calc(.5em - 1px) 1em;
-  position: relative;
+  padding: var(--padding-small);
   text-align: center;
-  user-select: none;
-  width: fit-content;
-  -webkit-user-select: none;
-  touch-action: manipulation;
   vertical-align: top;
   white-space: nowrap;
-  margin: 0.25rem;
-}
-
-.btn:active {
-  border-color: #4a4a4a;
-  outline: 0;
-}
-
-.btn:focus {
-  border-color: #485fc7;
-  outline: 0;
-}
-
-.btn:hover {
-  border-color: #b5b5b5;
-}
-
-.btn:focus:not(:active) {
-  box-shadow: rgba(72, 95, 199, .25) 0 0 0 .125em;
+  margin: var(--margin-tiny);
 }
 
 .deleteButton {
@@ -279,7 +262,7 @@ body {
   background-color: var(--background-color);
   color: var(--danger-color);
   width: var(--button-small-width);
-    height: var(--button-small-height);
+  height: var(--button-small-height);
   cursor: pointer;
   float: right;
 }
@@ -291,12 +274,15 @@ body {
   height: var(--button-small-height);
 }
 
-
-
 .right {
   float: right;
 }
-/*END: https://getcssscan.com/css-buttons-examples*/
+
+.danger {
+  color: var(--danger-color);
+}
+/* END: Buttons */
+
 
 .screen-center {
   width: 100%;
@@ -307,6 +293,7 @@ body {
   align-items: center;
 }
 
+/* START: Forms */
 form * {
   margin-bottom: 1rem;
 }
@@ -331,59 +318,6 @@ form input, form textarea, form select {
   justify-content: flex-end;
 }
 
-/*START: GPT*/
-
-.fab-container {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-}
-
-.fab {
-  background-color: #007bff;
-  color: #fff;
-  font-size: 1.5rem;
-  width: 60px;
-  height: 60px;
-  border: none;
-  border-radius: 50%;
-  cursor: pointer;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  transition: background-color 0.3s ease;
-}
-
-.fab:hover {
-  background-color: #0056b3;
-}
-
-.menu {
-  display: none;
-  position: absolute;
-  bottom: 4.1rem;
-  right: 0.8rem;
-  background-color: #fff;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  min-width: 200px;
-  border-radius: 0.5rem;
-}
-
-.menu ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.menu ul li {
-  padding: 10px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.menu ul li:hover {
-  background-color: #f4f4f4;
-}
-/*END: GPT*/
-
 .tag-list {
   display: flex;
   flex-wrap: wrap;
@@ -396,3 +330,57 @@ form input, form textarea, form select {
 dialog{
   max-width: 50vw;
 }
+/* END: Forms */
+
+/* START: FAB */
+.fab-container {
+  position: fixed;
+  bottom: var(--bottom-edge);
+  right: var(--right-edge);
+}
+
+.fab {
+  background-color: var(--primary-color);
+  color: var(--light-text-color);
+  font-size: 1.5rem;
+  width: var(--button-width);
+  height: var(--button-height);
+  border: none;
+  border-radius: 100%;
+  cursor: pointer;
+
+  /* thank you gpt */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease;
+}
+
+.menu {
+  display: none;
+  position: absolute;
+  bottom: calc(var(--bottom-edge) + 1.5rem);
+  right: calc(var(--right-edge) - 3rem);
+  background-color: var(--background-color);
+
+  min-width: var(--menu-width);
+
+  /* thank you gpt */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  border-radius: 0.5rem;
+}
+
+.menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.menu ul li {
+  padding: var(--padding-small);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.menu ul li:hover {
+  background-color: opacity(var(--background-color), 0.8);
+}
+/* END: FAB */
