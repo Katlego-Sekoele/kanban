@@ -5,6 +5,40 @@ import Task from '../models/task.js'
 
 document.addEventListener('DOMContentLoaded', function() {
 
+    function loadBoard() {
+        if (!localStorage.getItem('board')) return
+        hide('createBoardButton')
+        hide('boardForm')
+        show('fabContainer')
+        let boardParsed = JSON.parse(localStorage.getItem('board'))
+
+        board = new Board(boardParsed.name, boardParsed.description, [])
+
+        console.log('board parsed', boardParsed)
+
+        lanes = boardParsed.lanes.filter(lane => lane.name)
+        console.log('filtered lanes', lanes)
+
+        document.getElementById('MainDiv').setAttribute('class', '')
+        document.getElementById('fabContainer').style.display = 'block'
+        let pool = board.pool
+
+        for (const lane of lanes) {
+            board.addLane(lane.name, [])
+            for (const task of lane.tasks) {
+                board.lanes.find(laneInBoard => laneInBoard.name === lane.name).addTask(task.name, task.description, task.people, task.tags)
+            }
+        }
+
+        for (const lane of lanes) {
+            lane.attachToBoard(board.lanesDiv)
+            for (const task of lane.tasks) {
+                lane.addTask(task.name, task.description, task.people, task.tags)
+            }
+        }
+
+    }
+
     // click listeners
     document.getElementById('createBoardButton').onclick = () => {
         hide('createBoardButton');
@@ -40,6 +74,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
         board.addLane(laneName, [])
 
+        save()
+
     }
 
     document.getElementById('addTaskBtn').onclick = () => {
@@ -49,6 +85,8 @@ document.addEventListener('DOMContentLoaded', function() {
         let laneName = prompt("Name of lane")
 
         board.lanes.find(lane => lane.name === laneName).addTask(taskName, taskDescription, [], taskTags)
+
+        save()
     }
 
     let board;
@@ -71,6 +109,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         document.getElementById('fabContainer').style.display = 'block'
 
+        save()
     }
 
 
@@ -84,5 +123,11 @@ document.addEventListener('DOMContentLoaded', function() {
         let element = document.getElementById(elementId)
         element.style.display = 'inline-block'
     }
+
+    function save(){
+        localStorage.setItem('board', JSON.stringify(board));
+    }
+
+    loadBoard()
 
 });

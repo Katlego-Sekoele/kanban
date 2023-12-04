@@ -27,8 +27,10 @@ export default class Board {
         this.lanesDiv.setAttribute('slot', 'lanes')
         this.lanesDiv.setAttribute('id', 'lanes')
 
-        for (const lane of this.lanes) {
-            this.lanesDiv.appendChild(lane.lane)
+        console.log('this.lanes', this.lanes)
+
+        for (const lane in this.lanes) {
+            this.addLane(lane.name, lane.tasks)
         }
 
         pool.appendChild(this.lanesDiv)
