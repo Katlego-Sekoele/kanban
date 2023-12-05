@@ -3,6 +3,7 @@
   font-family: Arial, Helvetica, serif;
   --light-text-color: white;
   --dark-text-color: black;
+  --chip-text-color: black;
 
   /* colors */
   --background-color: white;
@@ -148,7 +149,7 @@ body {
   height: var(--chip-height, 0.8rem);
   width: fit-content;
   padding: var(--padding-small, 0.5rem);
-  color: var(--light-text-color);
+  color: var(--chip-text-color, black);
 }
 /* END: Chip */
 

@@ -30,7 +30,7 @@ export default class Board {
         this.lanesDiv.setAttribute('id', 'lanes')
 
         // Create a lane element for each lane
-        for (const lane in this.lanes) {
+        for (const lane of this.lanes) {
             this.addLane(lane.name, lane.tasks)
         }
 
