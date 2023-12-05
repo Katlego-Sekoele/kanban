@@ -125,6 +125,8 @@ document.addEventListener('DOMContentLoaded', function() {
         boardElement.remove()
         board = undefined
         localStorage.removeItem('board')
+        clearLaneSelectElement()
+
         show('MainDiv', 'flex')
         show('createBoardButton')
         hide('fabContainer')
@@ -175,6 +177,15 @@ document.addEventListener('DOMContentLoaded', function() {
         option.value = latestLane
         option.textContent = latestLane
         laneSelectElement.appendChild(option)
+
+    }
+
+    function clearLaneSelectElement() {
+        let laneSelectElement = document.getElementById('taskLane')
+
+        while (laneSelectElement.firstChild) {
+            laneSelectElement.removeChild(laneSelectElement.firstChild);
+        }
 
     }
 
