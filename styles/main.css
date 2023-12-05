@@ -6,6 +6,7 @@
   --chip-text-color: black;
 
   /* colors */
+  /* thank you gpt */
   --background-color: white;
   --border-color: #DDDDDD;
   --primary-color: #007bff;
@@ -57,36 +58,20 @@
 }
 
 .dark {
-    transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease;
 
-    /* Text colors */
-    --light-text-color: black;
-    --dark-text-color: white;
-
-    /* Background and border colors */
-    --background-color: #1a1a1a;
-    --border-color: #444444;
-
-    /* Primary color */
-    --primary-color: #3498db;
-
-    /* Secondary color */
-    --secondary-color: #b0bec5;
-
-    /* Success color */
-    --success-color: #4caf50;
-
-    /* Info color */
-    --info-color: #2196f3;
-
-    /* Warning color */
-    --warning-color: #ff9800;
-
-    /* Danger color */
-    --danger-color: #e74c3c;
-
-    /* Board color */
-    --board-color: #333333;
+  /*thank you gpt*/
+  --light-text-color: black;
+  --dark-text-color: white;
+  --background-color: #1a1a1a;
+  --border-color: #444444;
+  --primary-color: #3498db;
+  --secondary-color: #b0bec5;
+  --success-color: #4caf50;
+  --info-color: #2196f3;
+  --warning-color: #ff9800;
+  --danger-color: #e74c3c;
+  --board-color: #333333;
 }
 
 * {
